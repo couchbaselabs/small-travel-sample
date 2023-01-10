@@ -60,14 +60,20 @@ Prerequisites
 - Copy `.env.example` to `.env` and fill the details of the Couchbase Cluster which is being used to identify the documents to be exported.
 
 > DB_CONN_STR=<complete_connection_string> Example:couchbases://cb.xompk2curacvoatm.nonprod-project-avengers.com?tls_verify=no_verify
-> DB_USER=<database-username>
-> DB_PWD=<database-password>
+
+> DB_USER=database-username
+
+> DB_PWD=database-password
+
 > DB_BUCKET=travel-sample
+
 > DATA_DIR=<path-to-folder-containing-the-travel-sample-documents> Example: /Users/nithishraghunandan/Code/small-travel-sample/travel-sample/docs
 
 - Update the queries if you like by adding new queries to `queries.py`. Note that you need to create a new query & add it to an existing list for it to be checked.
 
 - Run the script, `identify_docs.py` to identify & export the docs that satisfy all the queries.
+
+  `$ python identify_docs.py`
 
 - The script displays a warning along with the query id if some query cannot be matched with any documents. These query ids can be debugged for errors.
 
