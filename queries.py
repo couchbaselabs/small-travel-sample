@@ -1315,7 +1315,7 @@ WHERE route.airlineid IN ["airline_330", "airline_225"]
 N1QL_REF_111 = Query(
     id="N1QL_REF_111",
     query="""
-    SELECT meta(airport).id FROM airport
+    SELECT meta(airport).id airport_id FROM airport
 WHERE city IN (SELECT RAW city FROM landmark)
 limit 10;
     """,
@@ -1409,7 +1409,7 @@ limit 10;
 N1QL_REF_120 = Query(
     id="N1QL_REF_120",
     query="""
-    SELECT META(r).id
+    SELECT META(r).id route_id
   FROM route AS r
   WHERE r.sourceairport = "SFO" 
     AND r.destinationairport = "ATL" 
@@ -1455,6 +1455,7 @@ N1QL_REF_124 = Query(
     SELECT meta(airport).id airport_id FROM airport WHERE airportname LIKE "San Francisco%";
     """,
 )
+
 N1QL_REF_QUERIES = [
     N1QL_REF_1,
     N1QL_REF_2,

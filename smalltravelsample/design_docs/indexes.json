@@ -1,0 +1,44 @@
+{
+  "statements": [
+    {
+      "statement": "CREATE PRIMARY INDEX def_sample_airport_primary ON `@BUCKET_NAME@`.sample.airport USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE PRIMARY INDEX def_sample_landmark_primary ON `@BUCKET_NAME@`.sample.landmark USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE PRIMARY INDEX def_sample_hotel_primary ON `@BUCKET_NAME@`.sample.hotel USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE PRIMARY INDEX def_sample_airline_primary ON `@BUCKET_NAME@`.sample.airline USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE PRIMARY INDEX def_sample_route_primary ON `@BUCKET_NAME@`.sample.route USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`sample`.`airline`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'airline' AND state = 'deferred'))",
+      "args": null
+    },
+    {
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`sample`.`airport`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'airport' AND state = 'deferred'))",
+      "args": null
+    },
+    {
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`sample`.`hotel`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'hotel' AND state = 'deferred'))",
+      "args": null
+    },
+    {
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`sample`.`landmark`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'landmark' AND state = 'deferred'))",
+      "args": null
+    },
+    {
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`sample`.`route`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'route' AND state = 'deferred'))",
+      "args": null
+    }
+  ]
+}

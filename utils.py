@@ -32,6 +32,7 @@ def get_doc_ids(result: couchbase.result.QueryResult) -> list[str]:
     hotel_doc = result.get("hotel_id")
     route_doc = result.get("route_id")
     landmark_doc = result.get("landmark_id")
+    user_doc = result.get("user_id")
 
     if airport_doc:
         docs.append(airport_doc)
@@ -47,5 +48,8 @@ def get_doc_ids(result: couchbase.result.QueryResult) -> list[str]:
 
     if landmark_doc:
         docs.append(landmark_doc)
+
+    if user_doc:
+        docs.append(user_doc)
 
     return docs

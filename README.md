@@ -38,11 +38,7 @@ SELECT META(h).id hotel_id, name, city, state
 
 Note that we added the document key using META(h).id as `hotel_id` for it to be exported to the hotel collection of the smaller sample data.
 
-- We export all the identified documents into a collection_name.json file which includes all the documents specified by their document id.
-
-```json
-{"airline_551": {"id": 551, "type": "airline", "name": "Air Moorea", "iata": null, "icao": "TAH", "callsign": "AIR MOOREA", "country": "France"}, "airline_139": {"id": 139, "type": "airline", "name": "Air Caledonie International", "iata": "SB", "icao": "ACI", "callsign": "AIRCALIN", "country": "France"}, "airline_1316": {"id": 1316, "type": "airline", "name": "AirTran Airways", "iata": "FL", "icao": "TRS", "callsign": "CITRUS", "country": "United States"}, "airline_21": {"id": 21, "type": "airline", "name": "Aigle Azur", "iata": "ZI", "icao": "AAF", "callsign": "AIGLE AZUR", "country": "France"}...
-```
+- We export all the identified documents into smalltravelsample.zip file which includes all the documents in the sample format for import using cbimport.
 
 - The current queries have been taken from the SDK & SQL++ queries from the playground along with the queries from the [SQL++ Reference Documentation pages](https://docs.couchbase.com/server/current/n1ql/n1ql-language-reference/index.html).
 
@@ -77,4 +73,8 @@ Prerequisites
 
 - The script displays a warning along with the query id if some query cannot be matched with any documents. These query ids can be debugged for errors.
 
-- The exported documents can be found in `airline.json`, `airport.json`, `hotel.json`, `landmark.json` and `route.json`. These can be imported into their respective collections in the small-travel-sample dataset.
+- The exported documents can be found in `travelsample.zip`. These can be imported into a bucket in Couchbase.
+
+```bash
+./cbimport json -c couchbase://localhost:8091 -u <username> -p <password> -b <bucket> -f sample -d file://smalltravelsample.zip
+```
