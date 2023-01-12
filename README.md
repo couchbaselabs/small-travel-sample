@@ -73,7 +73,7 @@ Prerequisites
 
 - The script displays a warning along with the query id if some query cannot be matched with any documents. These query ids can be debugged for errors.
 
-- The exported documents can be found in `travelsample.zip`. These can be imported into a bucket in Couchbase.
+- The exported documents can be found in `smalltravelsample.zip`. These can be imported into a bucket in Couchbase using cbimport.
 
 ```bash
 ./cbimport json -c couchbase://localhost:8091 -u <username> -p <password> -b <bucket> -f sample -d file://smalltravelsample.zip
