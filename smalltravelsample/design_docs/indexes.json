@@ -21,6 +21,10 @@
       "args": null
     },
     {
+      "statement": "CREATE PRIMARY INDEX def_primary on `@BUCKET_NAME@` USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
       "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`sample`.`airline`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'airline' AND state = 'deferred'))",
       "args": null
     },
@@ -38,6 +42,10 @@
     },
     {
       "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`sample`.`route`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'route' AND state = 'deferred'))",
+      "args": null
+    },
+    {
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`((SELECT RAW name FROM system:indexes WHERE keyspace_id = '@BUCKET_NAME@' AND state = 'deferred'))",
       "args": null
     }
   ]

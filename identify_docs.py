@@ -116,6 +116,9 @@ for export in EXPORT_MATRIX:
     dest_location = docs_location.replace("inventory", "sample")
     dest_location = dest_location.replace("tenant_agent_01", "sample")
     # print(dest_location)
+    default_location = docs_location.replace("inventory", "_default")
+    default_location = default_location.replace("tenant_agent_01", "_default")
+    default_location = default_location.replace(collection, "_default")
 
     print(f"Exporting {collection}")
     # export json/collection
@@ -140,6 +143,11 @@ for export in EXPORT_MATRIX:
                 destination_directory, f"{dest_location}.{doc_id}.json"
             )
             shutil.copy(src_file, dst_file)
+            # Also copy the document to _default scope & collection
+            def_file = pathlib.Path(
+                destination_directory, f"{default_location}.{doc_id}.json"
+            )
+            shutil.copy(src_file, def_file)
         except Exception as e:
             print(f"Exception while copying file {doc_id}", e)
 
