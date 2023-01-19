@@ -1456,6 +1456,126 @@ N1QL_REF_124 = Query(
     """,
 )
 
+N1QL_REF_125 = Query(
+    id="N1QL_REF_125",
+    query="""
+    SELECT meta(hotel).id hotel_id FROM hotel
+    where name="Sachas Hotel"
+    """,
+)
+
+N1QL_REF_126 = Query(
+    id="N1QL_REF_126",
+    query="""
+    SELECT DISTINCT route.sourceairport,
+                route.airlineid airline_id,
+                airline[0].callsign,
+                meta(route).id route_id
+    FROM route
+    NEST airline
+    ON KEYS route.airlineid
+    WHERE route.airline = "AA"
+    LIMIT 4;
+    """,
+)
+
+N1QL_REF_127 = Query(
+    id="N1QL_REF_127",
+    query="""
+    SELECT meta(airport).id airport_id
+FROM airport
+USE KEYS ["airport_1254","airport_1255"];
+    """,
+)
+
+N1QL_REF_128 = Query(
+    id="N1QL_REF_128",
+    query="""
+    SELECT meta(airline).id airline_id
+FROM airline
+USE KEYS ["airline_10","airline_21", "airline_22"];
+    """,
+)
+
+N1QL_REF_129 = Query(
+    id="N1QL_REF_129",
+    query="""
+    SELECT route.airline, route.sourceairport, route.destinationairport,
+  airline.callsign, meta(route).id route_id
+FROM route
+  LEFT JOIN airline
+  ON KEYS route.airlineid
+WHERE route.destinationairport = "ATL"
+  AND route.sourceairport = "SEA";
+    """,
+)
+
+N1QL_REF_130 = Query(
+    id="N1QL_REF_130",
+    query="""
+    SELECT DISTINCT route.destinationairport, route.stops, route.airline,
+  airline.name, airline.callsign, meta(route).id route_id
+FROM route
+  JOIN airline
+  ON KEYS route.airlineid
+WHERE airline.icao = "SWA"
+LIMIT 4;
+""",
+)
+
+N1QL_REF_131 = Query(
+    id="N1QL_REF_131",
+    query="""
+    SELECT *, meta(a).id airport_id
+FROM airport a
+  INNER NEST route r
+  ON a.faa = r.sourceairport
+WHERE a.city = "Toulouse"
+ORDER BY a.airportname;
+""",
+)
+
+N1QL_REF_132 = Query(
+    id="N1QL_REF_132",
+    query="""
+    SELECT meta(a).id airport_id
+FROM airport a
+  LEFT NEST route r
+  ON a.faa = r.sourceairport
+WHERE a.city = "Toulouse"
+ORDER BY a.airportname;
+    """,
+)
+
+N1QL_REF_133 = Query(
+    id="N1QL_REF_133",
+    query="""
+    SELECT airportname, geo.lat, meta(airport).id airport_id
+FROM airport
+USE KEYS ["airport_3571", "airport_8888"];
+    """,
+)
+
+N1QL_REF_134 = Query(
+    id="N1QL_REF_134",
+    query="""
+    SELECT t1.airline, t1.destinationairport, sch AS schedule, meta(t1).id route_id
+FROM route AS t1
+LET sch = ARRAY v FOR v IN t1.schedule WHEN v.day = 0 END 
+WHERE t1.destinationairport = "CDG"
+AND t1.airline = "AI";
+    """,
+)
+
+N1QL_REF_135 = Query(
+    id="N1QL_REF_135",
+    query="""
+    SELECT t1.airportname, t1.geo.lat, t1.geo.lon, t1.city, t1.type, meta(t1).id airport_id
+FROM airport t1
+USE KEYS ["airport_7715"];
+    """,
+)
+
 N1QL_REF_QUERIES = [
     N1QL_REF_1,
     N1QL_REF_2,
@@ -1581,4 +1701,15 @@ N1QL_REF_QUERIES = [
     N1QL_REF_122,
     N1QL_REF_123,
     N1QL_REF_124,
+    N1QL_REF_125,
+    N1QL_REF_126,
+    N1QL_REF_127,
+    N1QL_REF_128,
+    N1QL_REF_129,
+    N1QL_REF_130,
+    N1QL_REF_131,
+    N1QL_REF_132,
+    N1QL_REF_133,
+    N1QL_REF_134,
+    N1QL_REF_135,
 ]
