@@ -26,6 +26,14 @@ if __name__ == "__main__":
     data_directory = os.getenv("DATA_DIR")
     destination_directory = pathlib.Path(os.getcwd(), "smalltravelsample/docs")
 
+    # Delete existing files from the destination_directory
+    print("Deleting existing files in the output folder")
+    for file_to_delete in destination_directory.glob("*.json"):
+        try:
+            file_to_delete.unlink()
+        except Exception as e:
+            print(f"Failed to delete file {file_to_delete}", e)
+
     required_docs = set()
     # Connect options - authentication
     auth = PasswordAuthenticator(username, password)
@@ -75,7 +83,7 @@ if __name__ == "__main__":
         print(f"Warning: Query {USER_EXPORT_QUERY.id} did not yield any documents")
     required_docs.update(user_docs)
 
-    print(f"Identified {len(required_docs)} docs to be exported")
+    print(f"Identified {2*len(required_docs)} docs to be exported")
 
 # print(required_docs, len(required_docs))
 airport_docs = [a for a in required_docs if a.startswith("airport_")]
@@ -121,19 +129,6 @@ for export in EXPORT_MATRIX:
     default_location = default_location.replace(collection, "_default")
 
     print(f"Exporting {collection}")
-    # export json/collection
-    # for doc_id in tqdm(doc_ids):
-    #     try:
-    #         with open(
-    #             pathlib.Path(data_directory, f"{docs_location}.{doc_id}.json")
-    #         ) as f:
-    #             doc = json.load(f)
-    #             collection_export[doc_id] = doc
-    #     except Exception as e:
-    #         print(f"Exception while loading document {f}", e)
-
-    # with open(pathlib.Path(pathlib.Path.cwd(), f"{collection}.json"), "w") as out_file:
-    #     json.dump(collection_export, out_file)
 
     # export into sample format for cbimport
     for doc_id in tqdm(doc_ids):
