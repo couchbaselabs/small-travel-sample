@@ -34,6 +34,11 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"Failed to delete file {file_to_delete}", e)
 
+    # Deleting archive if it exists
+    destination_archive = pathlib.Path(destination_directory, "smalltravelsample.zip")
+    if os.path.exists(destination_archive):
+        os.unlink(destination_archive)
+
     required_docs = set()
     # Connect options - authentication
     auth = PasswordAuthenticator(username, password)
