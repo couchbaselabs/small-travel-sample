@@ -5,6 +5,74 @@
       "args": null
     },
     {
+      "statement": "CREATE INDEX def_name_type on `@BUCKET_NAME@`(name) WHERE _type='User' USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX def_faa ON `@BUCKET_NAME@`(faa) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX def_icao ON `@BUCKET_NAME@`(icao) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX def_city ON `@BUCKET_NAME@`(city) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX def_airportname ON `@BUCKET_NAME@`(airportname) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX def_type ON `@BUCKET_NAME@`(type) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX def_sourceairport ON `@BUCKET_NAME@`(sourceairport) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX def_schedule_utc on `@BUCKET_NAME@`(ARRAY s.utc FOR s IN schedule END) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX def_route_src_dst_day ON `@BUCKET_NAME@` (sourceairport, destinationairport, DISTINCT ARRAY v.day FOR v IN schedule END) WHERE type='route' USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement":"CREATE INDEX `def_sample_airport_airportname` ON `@BUCKET_NAME@`.sample.airport(airportname)  USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX `def_sample_landmark_city` ON `@BUCKET_NAME@`.sample.landmark(`city`) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX `def_sample_hotel_city` ON `@BUCKET_NAME@`.sample.hotel(`city`) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX `def_sample_airport_city` ON `@BUCKET_NAME@`.sample.airport(`city`) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX `def_sample_airport_faa` ON `@BUCKET_NAME@`.sample.airport(`faa`) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX `def_sample_route_route_src_dst_day` ON `@BUCKET_NAME@`.sample.route(`sourceairport`,`destinationairport`,(distinct (array (`v`.`day`) for `v` in `schedule` end))) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX `def_sample_route_schedule_utc` ON `@BUCKET_NAME@`.sample.route(array (`s`.`utc`) for `s` in `schedule` end) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
+      "statement": "CREATE INDEX `def_sample_route_sourceairport` ON `@BUCKET_NAME@`.sample.route(`sourceairport`) USING GSI WITH {\"defer_build\":true}",
+      "args": null
+    },
+    {
       "statement": "CREATE PRIMARY INDEX def_sample_landmark_primary ON `@BUCKET_NAME@`.sample.landmark USING GSI WITH {\"defer_build\":true}",
       "args": null
     },
