@@ -63,7 +63,9 @@ Prerequisites
 
 > DB_BUCKET=travel-sample
 
-> DATA_DIR=<path-to-folder-containing-the-travel-sample-documents> Example: /Users/nithishraghunandan/Code/small-travel-sample/travel-sample/docs
+> DATA_DIR=<path-to-folder-containing-the-travel-sample-documents> Example: ~/small-travel-sample/travel-sample/docs
+
+> Note that the cluster needs to contain the travel-sample bucket with the entire data for the script to work.
 
 - Update the queries if you like by adding new queries to `queries.py`. Note that you need to create a new query & add it to an existing list for it to be checked.
 
