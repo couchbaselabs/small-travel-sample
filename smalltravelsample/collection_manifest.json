@@ -1,9 +1,7 @@
 {"uid":"6","scopes":[
     {"name":"_default","uid":"0","collections":[{"name":"_default","uid":"0","maxTTL":0}]},
-    {"name":"sample","uid":"8","collections":[{"name":"airline","uid":"8","maxTTL":0},
+    {"name":"inventory","uid":"8","collections":[{"name":"airline","uid":"8","maxTTL":0},
                                                  {"name":"airport","uid":"9","maxTTL":0},
                                                  {"name":"hotel","uid":"a","maxTTL":0},
                                                  {"name":"landmark","uid":"b","maxTTL":0},
-                                                 {"name":"route","uid":"c","maxTTL":0},
-                                                 {"name":"bookings","uid":"d","maxTTL":0},
-                                                 {"name":"users","uid":"e","maxTTL":0}]}]}
+                                                 {"name":"route","uid":"c","maxTTL":0}]}]}
