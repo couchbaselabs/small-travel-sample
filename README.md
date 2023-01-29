@@ -4,6 +4,8 @@ A Python script used to identify the documents to load from the travel-sample da
 
 The documents are identified based on satisying the queries identified in `queries.py`.
 
+There is an alternate script, `generate_all.py` that is used to copy all the documents from the inventory scope into the small travel sample dataset.
+
 ## Approach
 
 - Define the list of queries that need to be satisfied by the documents to be exported.
@@ -72,6 +74,10 @@ Prerequisites
 - Run the script, `identify_docs.py` to identify & export the docs that satisfy all the queries.
 
   `$ python identify_docs.py`
+
+- If you would like to copy all the documents from the inventory scope into the small travel sample without filtering for documents matching queries, run the `generate_all.py` script. It copies all the documents in the inventory scope from travel-sample into small travel sample.
+
+  `$ python generate_all.py`
 
 - The script displays a warning along with the query id if some query cannot be matched with any documents. These query ids can be debugged for errors.
 
