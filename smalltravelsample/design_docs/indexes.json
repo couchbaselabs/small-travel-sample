@@ -1,47 +1,47 @@
 {
   "statements": [
     {
-      "statement": "CREATE INDEX def_inventory_airline_name ON `@BUCKET_NAME@`.inventory.airline(name INCLUDE MISSING) WITH {\"defer_build\":true}",
+      "statement": "CREATE INDEX def_samples_airline_name ON `@BUCKET_NAME@`.samples.airline(name INCLUDE MISSING) WITH {\"defer_build\":true}",
       "args": null
     },
     {
-      "statement": "CREATE INDEX def_inventory_airport_airportname_city_faa ON `@BUCKET_NAME@`.inventory.airport(airportname INCLUDE MISSING, city, faa) WITH {\"defer_build\":true}",
+      "statement": "CREATE INDEX def_samples_airport_airportname_city_faa ON `@BUCKET_NAME@`.samples.airport(airportname INCLUDE MISSING, city, faa) WITH {\"defer_build\":true}",
       "args": null
     },
     {
-      "statement": "CREATE INDEX def_inventory_hotel_city ON `@BUCKET_NAME@`.inventory.hotel(city INCLUDE MISSING) WITH {\"defer_build\":true}",
+      "statement": "CREATE INDEX def_samples_hotel_city ON `@BUCKET_NAME@`.samples.hotel(city INCLUDE MISSING) WITH {\"defer_build\":true}",
       "args": null
     },
     {
-      "statement": "CREATE INDEX def_inventory_landmark_city ON `@BUCKET_NAME@`.inventory.landmark(city INCLUDE MISSING) WITH {\"defer_build\":true}",
+      "statement": "CREATE INDEX def_samples_landmark_city ON `@BUCKET_NAME@`.samples.landmark(city INCLUDE MISSING) WITH {\"defer_build\":true}",
       "args": null
     },
     {
-      "statement": "CREATE INDEX def_inventory_route_route_src_dst_day ON `@BUCKET_NAME@`.inventory.route(sourceairport INCLUDE MISSING,destinationairport,(distinct (array (v.day) for v in schedule end))) WITH {\"defer_build\":true}",
+      "statement": "CREATE INDEX def_samples_route_route_src_dst_day ON `@BUCKET_NAME@`.samples.route(sourceairport INCLUDE MISSING,destinationairport,(distinct (array (v.day) for v in schedule end))) WITH {\"defer_build\":true}",
       "args": null
     },
     {
-      "statement": "CREATE INDEX def_inventory_route_schedule_utc ON `@BUCKET_NAME@`.inventory.route(array (s.utc) for s in schedule end) WITH {\"defer_build\":true}",
+      "statement": "CREATE INDEX def_samples_route_schedule_utc ON `@BUCKET_NAME@`.samples.route(array (s.utc) for s in schedule end) WITH {\"defer_build\":true}",
       "args": null
     },
     {
-      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`inventory`.`airline`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'airline' AND state = 'deferred'))",
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`samples`.`airline`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'airline' AND state = 'deferred'))",
       "args": null
     },
     {
-      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`inventory`.`airport`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'airport' AND state = 'deferred'))",
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`samples`.`airport`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'airport' AND state = 'deferred'))",
       "args": null
     },
     {
-      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`inventory`.`hotel`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'hotel' AND state = 'deferred'))",
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`samples`.`hotel`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'hotel' AND state = 'deferred'))",
       "args": null
     },
     {
-      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`inventory`.`landmark`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'landmark' AND state = 'deferred'))",
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`samples`.`landmark`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'landmark' AND state = 'deferred'))",
       "args": null
     },
     {
-      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`inventory`.`route`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'route' AND state = 'deferred'))",
+      "statement": "BUILD INDEX ON `@BUCKET_NAME@`.`samples`.`route`((SELECT RAW name FROM system:indexes WHERE keyspace_id = 'route' AND state = 'deferred'))",
       "args": null
     }
   ]

@@ -28,9 +28,11 @@ if __name__ == "__main__":
     print("Exporting documents")
     # Copy files from data_directory to destination_directory
     for file_to_copy in tqdm(list(source_directory.glob("inventory.*.json"))):
+        # Change the destination scope to samples from inventory
+        destination_file_name = file_to_copy.name.replace("inventory", "samples")
         try:
             shutil.copy(
-                file_to_copy, pathlib.Path(destination_directory, file_to_copy.name)
+                file_to_copy, pathlib.Path(destination_directory, destination_file_name)
             )
         except Exception as e:
             print(f"Exception while copying file {file_to_copy}", e)
